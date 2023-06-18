@@ -45,7 +45,7 @@ factorio_analytics_1.Factory.initialize({
     // Read file with blueprint string
     let t1 = new factorio_analytics_1.Trial({
         // Either a reference to the blueprint object, or a blueprint string itself to run
-        bp: fs.readFileSync('data/blueprints/k2_starter.txt', 'utf8'),
+        bp: fs.readFileSync('data/blueprints/1200spm_base.bp', 'utf8'),
         // how long (ticks) the trial will run for. Remember, factorio is locked at 60 ticks per second
         length: 216000,
         // how many ticks between item data polls (Items/fluids produced and consumed across the factory)
@@ -78,28 +78,92 @@ factorio_analytics_1.Factory.initialize({
         spec: 'prod',
         radix: 1,
     });
+    const redScience = t1.data.get({
+        category: 'item',
+        label: 'automation-science-pack',
+        spec: 'prod',
+        radix: 1,
+    });
+    const greenScience = t1.data.get({
+        category: 'item',
+        label: 'logistic-science-pack',
+        spec: 'prod',
+        radix: 2,
+    });
+    const blueScience = t1.data.get({
+        category: 'item',
+        label: 'chemical-science-pack',
+        spec: 'prod',
+        radix: 2,
+    });
+    const greyScience = t1.data.get({
+        category: 'item',
+        label: 'military-science-pack',
+        spec: 'prod',
+        radix: 2,
+    });
+    const purpleScience = t1.data.get({
+        category: 'item',
+        label: 'production-science-pack',
+        spec: 'prod',
+        radix: 2
+    });
+    const yellowScience = t1.data.get({
+        category: 'item',
+        label: 'utility-science-pack',
+        spec: 'prod',
+        radix: 2,
+    });
     // create chart
     yield ChartFactory_1.ChartFactory.generate({
-        chartTitle: 'K2 Starter Base',
-        filepath: 'charts/k2starter_base.png',
+        chartTitle: '1200 SPM Base',
+        filepath: 'charts/1200spm_base.png',
         xSize: 4096,
         ySize: 2160
     }, [
         {
-            dataset: ironPlates,
-            color: '#0022ff',
+            dataset: redScience,
+            color: '#fa0000',
             width: 2,
-            tension: .5,
-            smooth: 25,
-            legend: 'Iron Plates'
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Red Science'
+        }, {
+            dataset: greenScience,
+            color: '#00ff00',
+            width: 2,
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Green Science'
+        }, {
+            dataset: blueScience,
+            color: '#0000ff',
+            width: 2,
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Blue Science'
+        }, {
+            dataset: greyScience,
+            color: '#51c7b9',
+            width: 2,
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Grey Science'
+        }, {
+            dataset: purpleScience,
+            color: '#ff00ff',
+            width: 2,
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Purple Science'
         },
         {
-            dataset: copperPlates,
-            color: '#ff4d00',
+            dataset: yellowScience,
+            color: '#ffff00',
             width: 2,
-            tension: .5,
-            smooth: 25,
-            legend: 'Copper Plates'
+            smooth: 50,
+            tension: 0.7,
+            legend: 'Yellow Science'
         }
     ]);
     console.log('Done!');

@@ -14,7 +14,7 @@ Factory.initialize({
 
     let t1 = new Trial({
         // Either a reference to the blueprint object, or a blueprint string itself to run
-        bp: fs.readFileSync('data/blueprints/k2_starter.txt', 'utf8'),
+        bp: fs.readFileSync('data/blueprints/45base_nostop.bp', 'utf8'),
 
         // how long (ticks) the trial will run for. Remember, factorio is locked at 60 ticks per second
         length: 216000,
@@ -103,8 +103,8 @@ Factory.initialize({
 
     // create chart
     await ChartFactory.generate({
-        chartTitle: 'K2 Starter Base',
-        filepath: 'charts/k2starter_base.png',
+        chartTitle: '45 SPM Base Compact',
+        filepath: 'charts/45spm_base.png',
         xSize: 4096,
         ySize: 2160
     }, [
