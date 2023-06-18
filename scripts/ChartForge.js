@@ -45,7 +45,7 @@ factorio_analytics_1.Factory.initialize({
     // Read file with blueprint string
     let t1 = new factorio_analytics_1.Trial({
         // Either a reference to the blueprint object, or a blueprint string itself to run
-        bp: fs.readFileSync('data/blueprints/forge_a.bp', 'utf8'),
+        bp: fs.readFileSync('data/blueprints/12forge_plain.bp', 'utf8'),
         // how long (ticks) the trial will run for. Remember, factorio is locked at 60 ticks per second
         length: 216000,
         // how many ticks between item data polls (Items/fluids produced and consumed across the factory)
@@ -63,7 +63,7 @@ factorio_analytics_1.Factory.initialize({
     });
     let t2 = new factorio_analytics_1.Trial({
         // Either a reference to the blueprint object, or a blueprint string itself to run
-        bp: fs.readFileSync('data/blueprints/forge_b.bp', 'utf8'),
+        bp: fs.readFileSync('data/blueprints/12forge_eff.bp', 'utf8'),
         // how long (ticks) the trial will run for. Remember, factorio is locked at 60 ticks per second
         length: 216000,
         // how many ticks between item data polls (Items/fluids produced and consumed across the factory)
@@ -97,14 +97,14 @@ factorio_analytics_1.Factory.initialize({
     const aForgePower = t1.data.get({
         category: 'electric',
         label: 'all',
-        spec: 'prod',
+        spec: 'cons',
         scale: 1000000,
         radix: 2
     });
     const bForgePower = t2.data.get({
         category: 'electric',
         label: 'all',
-        spec: 'prod',
+        spec: 'cons',
         scale: 1000000,
         radix: 2
     });
@@ -115,7 +115,7 @@ factorio_analytics_1.Factory.initialize({
     // create chart
     yield ChartFactory_1.ChartFactory.generate({
         chartTitle: 'Comparison - Forge A Vs Forge B',
-        filepath: 'charts/forgeVS.png',
+        filepath: 'charts/elecforge.png',
         xSize: 4096,
         ySize: 2160
     }, [
@@ -133,13 +133,13 @@ factorio_analytics_1.Factory.initialize({
             width: 2,
             smooth: 5,
             tension: 0.4,
-            dashes: [5, 15],
+            dashes: [5, 5],
             legend: 'Iron Plates (Forge B)'
         },
         {
             dataset: aForgePower,
             color: '#00ff00',
-            width: 5,
+            width: 2,
             smooth: 25,
             tension: 0.4,
             legend: 'Electric Production (MW) (Forge A)',
@@ -147,10 +147,10 @@ factorio_analytics_1.Factory.initialize({
         {
             dataset: bForgePower,
             color: '#008d00',
-            width: 5,
+            width: 2,
             smooth: 25,
             tension: 0.4,
-            dashes: [5, 15],
+            dashes: [5, 5],
             legend: 'Electric Production (MW) (Forge B)',
         }
     ]);

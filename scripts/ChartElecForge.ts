@@ -20,13 +20,13 @@ Factory.initialize({
         length: 216000,
 
         // how many ticks between item data polls (Items/fluids produced and consumed across the factory)
-        itemInterval: 60,
+        itemInterval: 3600,
 
         // how many ticks between elec data polls (The power usage and production of the factory, per network)
-        elecInterval: 60,
+        elecInterval: 3600,
 
         // how many ticks between Pollution data polls (The pollution of the factory, total)
-        pollInterval: 60,
+        pollInterval: 3600,
 
         // how many ticks of performance info should be grouped together (Perf info is recorded every tick by default)
         sysInterval: 300,
@@ -45,16 +45,16 @@ Factory.initialize({
         length: 216000,
 
         // how many ticks between item data polls (Items/fluids produced and consumed across the factory)
-        itemInterval: 60,
+        itemInterval: 3600,
 
         // how many ticks between elec data polls (The power usage and production of the factory, per network)
-        elecInterval: 60,
+        elecInterval: 3600,
 
         // how many ticks between Pollution data polls (The pollution of the factory, total)
-        pollInterval: 60,
+        pollInterval: 3600,
 
         // how many ticks of performance info should be grouped together (Perf info is recorded every tick by default)
-        sysInterval: 300,
+        sysInterval: 3600,
 
         // how many logistic bots to start roboports with. If left as is, none will be placed
         initialBots: 300,
@@ -114,7 +114,7 @@ Factory.initialize({
             dataset: aForgeIronPlates,
             color: '#0057fa',
             width: 2,
-            smooth: 5,
+            smooth: 25,
             tension: 0.4,
             legend: 'Iron Plates (Forge A)'
         },
@@ -122,7 +122,7 @@ Factory.initialize({
             dataset: bForgeIronPlates,
             color: '#00338d',
             width: 2,
-            smooth: 5,
+            smooth: 25,
             tension: 0.4,
             dashes: [5, 5],
             legend: 'Iron Plates (Forge B)'
@@ -143,6 +143,23 @@ Factory.initialize({
             tension: 0.4,
             dashes: [5, 5],
             legend: 'Electric Production (MW) (Forge B)',
+        },
+        {
+            dataset: aForgeRatio,
+            color: '#ff0000',
+            width: 2,
+            smooth: 25,
+            tension: 0.4,
+            legend: 'Iron Plates per MW (Forge A)',
+        },
+        {
+            dataset: bForgeRatio,
+            color: '#8d0000',
+            width: 2,
+            smooth: 25,
+            tension: 0.4,
+            dashes: [5, 5],
+            legend: 'Iron Plates per MW (Forge B)',
         }
     ])
 
